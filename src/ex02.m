@@ -9,4 +9,4 @@ B = get_B_matrix(pts_3D, pts_2D);
 
 m = V(:, end);
 
-addpath("data/ex02/");
+rmpath("data/ex02/");
