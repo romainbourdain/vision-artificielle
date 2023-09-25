@@ -15,6 +15,8 @@ function main(exo)
             ex02;
         case 5
             ex05;
+        otherwise
+            disp("Cet exercice n'existe pas");
     end
 
 end
