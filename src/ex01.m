@@ -1,4 +1,5 @@
 addpath("data/ex01/");
+output_path = "output/ex01/";
 
 u_0 = 256;
 v_0 = 256;
@@ -13,6 +14,6 @@ t = load('t1.txt');
 A = [alpha_u gamma u_0; 0 alpha_v v_0; 0 0 1]; % get intrinsic matrix
 proj_mat = A * [R -R*t]; % get proj mat
 
-disp(proj_mat)
+save(output_path+"proj_mat.txt", "proj_mat", "-ascii");
 
 rmpath("data/ex01/");

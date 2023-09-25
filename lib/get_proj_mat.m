@@ -1,7 +1,7 @@
 function [M] = get_proj_mat(pts_3D, pts_2D)
     B = get_B_matrix(pts_3D, pts_2D);
     
-    [U, D, V] = svd(B);
+    [~, ~, V] = svd(B);
 
     m = V(:, end);
     M_chapeau = reshape(m, 4, 3)';
