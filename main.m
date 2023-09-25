@@ -13,6 +13,8 @@ function main(exo)
             ex01;
         case 2
             ex02;
+        case 5
+            ex05;
     end
 
 end
