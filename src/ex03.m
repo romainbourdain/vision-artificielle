@@ -2,30 +2,25 @@ addpath("data/ex03/");
 
 pts_image = load("pts2dimage.txt");
 pts_scene = load("pts2dscene.txt");
+n = size(pts_image, 1)/2;
 
 % estimation
-x = pts_image(1:50, 1);
-y = pts_image(1:50, 2);
+pts_scene_estimation = pts_scene(1:n, :);
+pts_image_estimation = pts_image(1:n, :);
 
-u = pts_scene(1:50, 1);
-v = pts_scene(1:50, 2);
-
-B = zeros(100, 9);
-
-for i=1:50
-    B(2*i-1, :) = [x(i) y(i) 1 0 0 0 -u(i)*x(i) -u(i)*y(i) -u(i)];
-    B(2*i, :) = [0 0 0 x(i) y(i) 1 -v(i)*x(i) -v(i)*y(i) -v(i)];
-end
-
-[~, ~, V] = svd(B);
-
-H = reshape(V(:, end), 3, 3);
+H = get_homography(pts_scene_estimation, pts_image_estimation, n);
 
 % verification
-x = pts_image(51:100, 1);
-y = pts_image(51:100, 2);
+pts_scene_verification = pts_scene(n+1:end, :);
+pts_image_verification = pts_image(n+1:end, :);
 
-u = pts_scene(51:100, 1);
-v = pts_scene(51:100, 2);
+mat_scene_verification = [pts_scene_verification ones(n, 1)];
+pts_image_estime = (H*mat_scene_verification')';
+pts_image_estime = pts_image_estime./pts_image_estime(:, 3);
+pts_image_estime = pts_image_estime(:, 1:2);
+
+erreur = norm(pts_image_estime-pts_image_verification);
+
+disp(['Erreur euclidienne : ', num2str(erreur)]);
 
 rmpath("data/ex03/");

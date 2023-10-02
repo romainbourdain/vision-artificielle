@@ -15,6 +15,8 @@ function main(exo)
             ex02;
         case 3
             ex03;
+        case 4
+            ex04;
         case 5
             ex05;
         otherwise
