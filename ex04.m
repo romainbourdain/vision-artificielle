@@ -1,4 +1,4 @@
-addpath("/lib");
+addpath("lib/");
 
 pts_mire = load("data/mireXY.txt");
 

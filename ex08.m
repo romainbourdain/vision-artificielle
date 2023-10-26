@@ -1,4 +1,4 @@
-addpath("lib");
+addpath("lib/");
 
 pts_2D_1 = load("data/2dpts_1.txt");
 pts_2D_2 = load("data/2dpts_2.txt");

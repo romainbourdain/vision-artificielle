@@ -1,4 +1,4 @@
-addpath("./lib");
+addpath("lib/");
 
 pts_image = load("data/pts2dimage.txt");
 pts_scene = load("data/pts2dscene.txt");
