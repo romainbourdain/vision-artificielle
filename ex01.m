@@ -3,8 +3,8 @@ v_0 = 256;
 alpha_u = 800;
 alpha_v = 800;
 gamma = 0;
-R = load('R1.txt');
-t = load('t1.txt');
+R = load('data/R1.txt');
+t = load('data/t1.txt');
 
 % R est une rotation car R*R'=I et det(R)=1
 

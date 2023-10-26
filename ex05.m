@@ -1,6 +1,6 @@
-pts_2D_1 = load("2dpts_1.txt");
-pts_2D_2 = load("2dpts_2.txt");
-pts_3D = load("3dpts.txt");
+pts_2D_1 = load("data/2dpts_1.txt");
+pts_2D_2 = load("data/2dpts_2.txt");
+pts_3D = load("data/3dpts.txt");
 
 
 % Question 1
@@ -13,8 +13,8 @@ disp("M_2 : ");
 disp(M_2);
 
 % Question 2
-scene_1 = load("2dpts-scene_1.txt");
-scene_2 = load("2dpts-scene_2.txt");
+scene_1 = load("data/2dpts-scene_1.txt");
+scene_2 = load("data/2dpts-scene_2.txt");
 
 scene = construct_3d_scene(M_1, scene_1, M_2, scene_2);
 

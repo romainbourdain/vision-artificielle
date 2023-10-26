@@ -1,6 +1,8 @@
-pts_2D_1 = load("2dpts_1.txt");
-pts_2D_2 = load("2dpts_2.txt");
-pts_2D_3 = load("2dpts_3.txt");
+addpath("lib");
+
+pts_2D_1 = load("data/2dpts_1.txt");
+pts_2D_2 = load("data/2dpts_2.txt");
+pts_2D_3 = load("data/2dpts_3.txt");
 
 % Calcul des matrices fondamentales
 p1 = pts_2D_1(1:50, :);
@@ -20,11 +22,11 @@ pts_3_estimated = estimate_image(pts_1, pts_2, F13, F23);
 error = get_euclidian_error(pts_3_estimated, pts_3, 2);
 
 % Avec les châteaux
-castle_1 = imread("castle.01.jpg");
-castle_2 = imread("castle.02.jpg");
-castle_3 = imread("castle.03.jpg");
+castle_1 = imread("data/castle.01.jpg");
+castle_2 = imread("data/castle.02.jpg");
+castle_3 = imread("data/castle.03.jpg");
 
-load("pts2d.mat", "pts");
+load("data/pts2d.mat", "pts");
 
 % Affichage des châteaux et des points
 figure("Name", "Châteaux et points");
@@ -48,32 +50,6 @@ figure("Name", "Châteaux et droites épipolaires");
 castle_1 = draw_epipolar_line(castle_1, e13(:, 1));
 castle_1 = draw_epipolar_line(castle_1, e23(:, 1));
 imshow(castle_1);
-
-function [F] = get_fundamental_from_svd(p1, p2)
-    n = size(p1, 1);
-    
-    B = zeros(n, 9);
-    
-    for i=1:n
-        B(i, :) = [
-            p1(i, 1)*p2(i, 1)
-            p1(i, 2)*p2(i, 1)
-            p2(i, 1)
-            p1(i, 1)*p2(i, 2)
-            p1(i, 2)*p2(i, 2)
-            p2(i, 2)
-            p1(i, 1)
-            p1(i, 2)
-            1
-            ];
-    end
-    
-    [~, ~, V] = svd(B);
-    V = V(:, end);
-    
-    F = reshape(V, 3, 3)';
-    F = F / F(3, 3);
-end
 
 function [pts_3] = estimate_image(pts_1, pts_2, F13, F23)    
 

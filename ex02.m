@@ -1,5 +1,5 @@
-pts_2D = load("2dpts_1.txt");
-pts_3D = load("3dpts.txt");
+pts_2D = load("data/2dpts_1.txt");
+pts_3D = load("data/3dpts.txt");
 
 M = get_proj_mat(pts_3D, pts_2D);
 

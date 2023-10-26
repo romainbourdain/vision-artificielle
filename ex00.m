@@ -1,5 +1,5 @@
-proj_mat = load('proj_mat1.txt');
-pts_3d = load('3dpts.txt');
+proj_mat = load('data/proj_mat1.txt');
+pts_3d = load('data/3dpts.txt');
 
 [u, v] = project(proj_mat, pts_3d);
 
