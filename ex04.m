@@ -59,6 +59,7 @@ disp(R);
 disp("t : ");
 disp(t);
 
+rmpath("lib/");
 
 function [R, t] = get_intrinsic_parameters(A, H)
     lambda = 1 / norm(A \ H(:, 1));
@@ -68,5 +69,3 @@ function [R, t] = get_intrinsic_parameters(A, H)
     t_1 = lambda * (A \ H(:, 3));
     t = -R' * t_1;
 end
-
-rmpath("lib/");

@@ -41,20 +41,4 @@ p2_noise = add_noise(p2, sigma);
 F_NOISE = get_fundamental_from_svd(p1_noise, p2_noise);
 F_NOISE = get_closest_matrix(F_NOISE);
 
-function [p_noise] = add_noise(p, sigma)
-    u = p(:, 1);
-    v = p(:, 2);
-
-    u = u + sigma * randn(size(u));
-    v = v + sigma * randn(size(v)); 
-
-    p_noise = [u v];
-end
-
-function [F_closest] = get_closest_matrix(F)
-    [U, D, V] = svd(F);
-    D(3, 3) = 0;
-    F_closest = U*D*V';
-end
-
 rmpath("lib/")

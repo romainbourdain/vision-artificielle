@@ -18,6 +18,8 @@ pts_scene = [350 418; 438 422; 236 671; 732 654];
 api = put_image(pts_scene, pts_image, api, prega);
 imshow(api);
 
+rmpath("lib/");
+
 function [scene] = put_image(pts_scene, pts_image, scene, image)
   H = get_homography(pts_scene, pts_image);
   min_x = min(pts_scene(:, 1));
@@ -39,5 +41,3 @@ function [scene] = put_image(pts_scene, pts_image, scene, image)
     end
   end
 end
-
-rmpath("lib/");

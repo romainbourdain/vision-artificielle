@@ -51,6 +51,8 @@ castle_1 = draw_epipolar_line(castle_1, e13(:, 1));
 castle_1 = draw_epipolar_line(castle_1, e23(:, 1));
 imshow(castle_1);
 
+rmpath("lib/");
+
 function [pts_3] = estimate_image(pts_1, pts_2, F13, F23)    
 
     n = size(pts_1, 1);
@@ -62,11 +64,6 @@ function [pts_3] = estimate_image(pts_1, pts_2, F13, F23)
         p3 = p3 / p3(3);
         pts_3(i, :) = p3(:, 1:2);
     end
-end
-
-function [error] = get_euclidian_error(estimated, real, dim)
-    error = sqrt(sum((estimated - real).^2, dim));
-    error = mean(error);
 end
 
 function display_pts_in_img(img, pts)
@@ -87,5 +84,3 @@ function [img] = draw_epipolar_line(img, e)
         img = insertShape(img, "Line", [x' y'], "Color", "red");
     end
 end
-
-rmpath("lib/");
