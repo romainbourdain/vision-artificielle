@@ -39,3 +39,5 @@ function [scene] = put_image(pts_scene, pts_image, scene, image)
     end
   end
 end
+
+rmpath("lib/");

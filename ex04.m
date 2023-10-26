@@ -68,3 +68,5 @@ function [R, t] = get_intrinsic_parameters(A, H)
     t_1 = lambda * (A \ H(:, 3));
     t = -R' * t_1;
 end
+
+rmpath("lib/");

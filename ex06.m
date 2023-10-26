@@ -57,3 +57,4 @@ function [F_closest] = get_closest_matrix(F)
     F_closest = U*D*V';
 end
 
+rmpath("lib/")

@@ -87,3 +87,5 @@ function [img] = draw_epipolar_line(img, e)
         img = insertShape(img, "Line", [x' y'], "Color", "red");
     end
 end
+
+rmpath("lib/");
