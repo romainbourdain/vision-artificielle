@@ -41,4 +41,15 @@ p2_noise = add_noise(p2, sigma);
 F_NOISE = get_fundamental_from_svd(p1_noise, p2_noise);
 F_NOISE = get_closest_matrix(F_NOISE);
 
-rmpath("lib/")
+% Minimisation du critère
+options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt');
+F_corrected = lsqnonlin(@(F) get_criterion(F, p1, p2), F_SVD, [], [], options);
+F_corrected = get_closest_matrix(F_corrected);
+
+function criterion = get_criterion(F, p1, p2)
+    n = size(p1, 1);
+    criterion = 0;
+    for i=1:n
+        criterion = criterion + epipolar_distance(F, [p1(i, :) 1]', [p2(i, :) 1]')^2;
+    end
+end

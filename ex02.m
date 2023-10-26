@@ -16,8 +16,6 @@ disp([ ...
     "v_0: "+ v_0
     ]);
 
-rmpath("lib/");
-
 function [alpha_u, alpha_v, gamma, u_0, v_0] = get_intrinsic_parameters(M)
     m_1 = M(1, 1:3)';
     m_2 = M(2, 1:3)';

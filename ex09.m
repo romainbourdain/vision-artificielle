@@ -3,22 +3,27 @@ addpath("lib/");
 prega = imread("data/prega.pgm");
 api = imread("data/t2.pgm");
 
-pts_image = [0 0; 0 size(prega, 1); size(prega, 2) 0; size(prega, 2) size(prega, 1)];
+pts_image = [0 0; 0 size(prega, 1); size(prega, 2) size(prega, 1); size(prega, 2) 0;];
 
-pts_scene = [165 485; 232 452; 165 646; 232 555];
+pts_scene = [165 485; 232 452; 232 555; 165 646];
 api = put_image(pts_scene, pts_image, api, prega);
 
-pts_scene = [69 475; 165 487; 65 621; 164 645];
+pts_scene = [69 475; 165 487; 164 645; 65 621];
 api = put_image(pts_scene, pts_image, api, prega);
 
-pts_scene = [75 451; 230 454; 69 476; 164 487];
+pts_scene = [75 451; 230 454; 164 487; 69 476];
 api = put_image(pts_scene, pts_image, api, prega);
 
-pts_scene = [350 418; 438 422; 236 671; 732 654];
+pts_scene = [350 418; 438 422; 732 654; 236 671];
 api = put_image(pts_scene, pts_image, api, prega);
 imshow(api);
 
-rmpath("lib/");
+[x1 y1] = ginput(1);
+[x2 y2] = ginput(1);
+[x3 y3] = ginput(1);
+[x4 y4] = ginput(1);
+api = put_image([x1 y1; x2 y2; x3 y3; x4 y4], pts_image, api, prega);
+imshow(api);
 
 function [scene] = put_image(pts_scene, pts_image, scene, image)
   H = get_homography(pts_scene, pts_image);

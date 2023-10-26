@@ -51,8 +51,6 @@ castle_1 = draw_epipolar_line(castle_1, e13(:, 1));
 castle_1 = draw_epipolar_line(castle_1, e23(:, 1));
 imshow(castle_1);
 
-rmpath("lib/");
-
 function [pts_3] = estimate_image(pts_1, pts_2, F13, F23)    
 
     n = size(pts_1, 1);

@@ -24,5 +24,3 @@ pts_image_estime = pts_image_estime(:, 1:2);
 erreur = norm(pts_image_estime - pts_image_verification);
 
 disp(['Erreur euclidienne : ', num2str(erreur)]);
-
-rmpath("lib/")
