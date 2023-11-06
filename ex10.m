@@ -33,8 +33,12 @@ trace = A + C;
 H = det - alpha*(trace.^2);
 H_s = (median(H(:)) + max(H(:))) / 2^7;
 
+H_max = ordfilt2(H, dim*dim, ones(dim));
+
+H = H >= max(H_s, H_max);
+
 imshow(I);
 hold on;
-[y, x] = find(H >= H_s);
-plot(x, y, "r.");
+[y, x] = find(H);
+plot(x, y, "r*");
 hold off;
