@@ -45,7 +45,7 @@ F_NOISE = get_closest_matrix(F_NOISE);
 options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt');
 F_corrected = lsqnonlin(@(F) get_criterion(F, p1, p2), F_SVD, [], [], options);
 F_corrected = get_closest_matrix(F_corrected);
-
+    
 function criterion = get_criterion(F, p1, p2)
     n = size(p1, 1);
     criterion = 0;
