@@ -1,5 +1,5 @@
 format long;
-data = load("data/data.mat");
+data = load("data.mat");
 
 Fs = data.Fs;
 A = data.A;

@@ -1,6 +1,4 @@
-addpath("lib/");
-
-I = imread("data/checker.pgm");
+I = imread("checker.pgm");
 
 h_u = [
   -1 0 1; 
